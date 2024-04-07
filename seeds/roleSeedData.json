@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Lion Tamers",
+    "salary": 60000.0,
+    "department_id": 1
+  },
+  {
+    "title": "Dog Tamers",
+    "salary": 40000.0,
+    "department_id": 1
+  },
+  {
+    "title": "Elephant Tamers",
+    "salary": 50000.0,
+    "department_id": 1
+  },
+  {
+    "title": "Cook",
+    "salary": 40000.0,
+    "department_id": 2
+  },
+  {
+    "title": "Cashier",
+    "salary": 30000.0,
+    "department_id": 2
+  },
+  {
+    "title": "Clown",
+    "salary": 35000.0,
+    "department_id": 3
+  },
+  {
+    "title": "Acrobat",
+    "salary": 45000.0,
+    "department_id": 3
+  },
+  {
+    "title": "Game Operator",
+    "salary": 30000.0,
+    "department_id": 4
+  },
+  {
+    "title": "Ride Operator",
+    "salary": 35000.0,
+    "department_id": 4
+  },
+  {
+    "title": "Custodian",
+    "salary": 40000.0,
+    "department_id": 5
+  },
+  {
+    "title": "Ride Engineer",
+    "salary": 60000.0,
+    "department_id": 5
+  }
+]
