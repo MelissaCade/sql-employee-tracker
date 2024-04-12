@@ -1,5 +1,12 @@
 [
   {
+    "id": 0,
+    "first_name": "null",
+    "last_name": "",
+    "role_id": 1,
+    "manager_id": null
+  },
+  {
     "first_name": "Mufasa",
     "last_name": "Smith",
     "role_id": 1,
@@ -78,19 +85,19 @@
     "manager_id": 11
   },
   {
-    "first_name": "Donald",
+    "first_name": "Dumbo",
     "last_name": "Trump",
     "role_id": 6,
     "manager_id": null
   },
   {
-    "first_name": "George",
+    "first_name": "Bozo",
     "last_name": "Bush",
     "role_id": 6,
     "manager_id": 14
   },
   {
-    "first_name": "Bill",
+    "first_name": "Krusty",
     "last_name": "Clinton",
     "role_id": 6,
     "manager_id": 14

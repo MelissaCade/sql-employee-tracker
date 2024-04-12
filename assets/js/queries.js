@@ -2,6 +2,7 @@
 const Employee = require("../../models/employee");
 const { Pool } = require("pg");
 const util = require("util");
+const inquirer = require("inquirer");
 
 // const sequelize = require("./config/connection");
 
@@ -45,7 +46,7 @@ const addDepartment = [
 
 const query = (sql, options) => {
   return new Promise((resolve, reject) => {
-    client.query(sql, options, (err, data) => {
+    pool.query(sql, options, (err, data) => {
       if (err) {
         return reject(err);
       }
@@ -55,91 +56,92 @@ const query = (sql, options) => {
 };
 
 //follow-up question for adding a new role
-const addRole = [
-  {
-    type: "input",
-    message: "What is the name of the new role you'd like to add?",
-    name: "roleName",
-  },
-  {
-    type: "input",
-    message: "What is the salary for the new role?",
-    name: "roleSalary",
-  },
-  {
-    type: "list",
-    message: "What department will the new role be in?",
-    name: "roleDept",
-    choices: function () {
-      query('SELECT NOW() AS "theTime"').then(({ rows }) => {
-        console.log(rows[0].theTime);
-        client.end();
-      });
-    },
-  },
-];
 
-// choices: function () {
-//   pool.query(
-//     `SELECT id AS value, name as name FROM role`,
-//     (error, { rows: choices }) => {
-//       console.log(choices);
-//       return choices;
-//     }
-//   );
-// },
+async function addRole() {
+  return inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the name of the new role you'd like to add?",
+      name: "roleName",
+    },
+    {
+      type: "input",
+      message: "What is the salary for the new role?",
+      name: "roleSalary",
+    },
+    {
+      type: "list",
+      message: "What department will the new role be in?",
+      name: "roleDept",
+      choices: await query(
+        "SELECT id AS value, name AS name FROM department ORDER BY name ASC LIMIT 9999 OFFSET 1"
+      ).then(({ rows }) => rows),
+    },
+  ]);
+}
 
 //follow-up question for adding a new employee
-const addEmployee = [
-  {
-    type: "input",
-    message: "What is the new employee's first name?",
-    name: "newEmpFirst",
-  },
-  {
-    type: "input",
-    message: "What is the new employee's last name?",
-    name: "newEmpLast",
-  },
-  {
-    type: "input",
-    message: "What is the new employee's role?",
-    name: "newEmpRole",
-  },
-  {
-    type: "input",
-    message:
-      "Who is the new employee's manager? (Enter the manager's employee number, or, if there is no manager, enter 'null'.",
-    name: "newEmpManager",
-  },
-];
+async function addEmployee() {
+  return inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the new employee's first name?",
+      name: "newEmpFirst",
+    },
+    {
+      type: "input",
+      message: "What is the new employee's last name?",
+      name: "newEmpLast",
+    },
+    {
+      type: "list",
+      message: "What role will the new employee perform?",
+      name: "newEmpRole",
+      choices: await query(
+        "SELECT id AS value, title AS name FROM role ORDER BY name ASC LIMIT 9999 OFFSET 1"
+      ).then(({ rows }) => rows),
+    },
+    {
+      type: "list",
+      message: "Who is the new employee's manager?",
+      name: "newEmpManager",
+      choices: await query(
+        "SELECT id AS value, concat(first_name, ' ', last_name) AS name FROM employee"
+      ).then(({ rows }) => rows),
+    },
+  ]);
+}
 
 //follow-up question to update employee role
-const updateEmployee = [
-  {
-    type: "list",
-    message: "Please choose an employee.",
-    choices: [
-      //list of current employees pulled from sql employee table
-    ],
-  },
-  {
-    type: "list",
-    message: "Please choose an updated role for this employee.",
-    choices: [
-      //list of current roles pulled from sql role table
-    ],
-  },
-  {
-    type: "list",
-    message:
-      "Please choose an updated manager for this employee. (If employee has no manager, choose 'null'.",
-    choices: [
-      //list of current employees pulled from sql employee table
-      //null
-    ],
-  },
-];
+//use UPDATE command
+async function updateEmployee() {
+  return inquirer.prompt([
+    {
+      type: "list",
+      message: "Please choose an employee.",
+      name: "updateEmpName",
+      choices: await query(
+        "SELECT id AS value, concat(first_name, ' ', last_name) AS name FROM employee LIMIT 9999 OFFSET 1"
+      ).then(({ rows }) => rows),
+    },
+    {
+      type: "list",
+      message: "Please choose an updated role for this employee.",
+      name: "updateEmpRole",
+      choices: await query(
+        "SELECT id AS value, title AS name FROM role LIMIT 9999 OFFSET 1"
+      ).then(({ rows }) => rows),
+    },
+    {
+      type: "list",
+      message: "Please choose an updated manager for this employee.",
+      name: "updateEmpManager",
+      choices: await query(
+        "SELECT id AS value, concat(first_name, ' ', last_name) AS name FROM employee"
+      ).then(({ rows }) => rows),
+    },
+  ]);
+}
 
 module.exports = {
   initQuery,
