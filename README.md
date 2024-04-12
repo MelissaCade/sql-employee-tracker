@@ -8,7 +8,7 @@ This application takes in user data via the terminal to add employees, roles, an
 
 ## Demonstrations
 
-
+<video controls src="assets/video_walkthrough/Recording 2024-04-11 233844.mp4" title="Demonstration Video"></video>
 
 ## Screenshots
 
