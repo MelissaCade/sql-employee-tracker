@@ -8,23 +8,23 @@ This application takes in user data via the terminal to add employees, roles, an
 
 ## Demonstrations
 
-<video controls src="assets/video_walkthrough/Recording 2024-04-11 233844.mp4" title="Demonstration Video"></video>
+Link to demonstration video download: https://github.com/MelissaCade/sql-employee-tracker/blob/main/assets/video_walkthrough/Recording%202024-04-11%20233844.mp4
 
 ## Screenshots
 
-[Initial Options](./assets/images/Screenshot%202024-04-11%20221404.jpg)
+![Initial Options](./assets/images/Screenshot%202024-04-11%20221404.jpg)
 
-[View All Departments](./assets/images/Screenshot%202024-04-11%20221652.jpg)
+![View All Departments](./assets/images/Screenshot%202024-04-11%20221652.jpg)
 
-[View All Roles](./assets/images/Screenshot%202024-04-11%20224434.jpg)
+![View All Roles](./assets/images/Screenshot%202024-04-11%20224434.jpg)
 
-[View All Employees](./assets/images/Screenshot%202024-04-11%20224639.jpg)
+![View All Employees](./assets/images/Screenshot%202024-04-11%20224639.jpg)
 
-[Add a Department, Role, and Employee](./assets/images/Screenshot%202024-04-11%20225047.jpg)
+![Add a Department, Role, and Employee](./assets/images/Screenshot%202024-04-11%20225047.jpg)
 
-[Add a Department, Role, and Employee](./assets/images/Screenshot%202024-04-11%20225211.jpg)
+![Add a Department, Role, and Employee](./assets/images/Screenshot%202024-04-11%20225211.jpg)
 
-[Update an Employee](./assets/images/Screenshot%202024-04-11%20225327.jpg)
+![Update an Employee](./assets/images/Screenshot%202024-04-11%20225327.jpg)
 
 ## Installation
 
