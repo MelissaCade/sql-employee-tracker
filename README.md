@@ -28,7 +28,7 @@ This application takes in user data via the terminal to add employees, roles, an
 
 ## Installation
 
-Navigate to the product directory and use "npm i" in your terminal to install all necessary node packages.
+Navigate to the project directory and use "npm i" in your terminal to install all necessary node packages.
 
 To create your database, type "psql -U postgres" in your terminal, then type "\i db/schema.sql", then "\q" to exit the postgres shell.
 
